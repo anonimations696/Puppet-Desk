@@ -6,8 +6,6 @@
 
 Download **PuppetDesk-Windows.zip** from Releases, extract it, and run **Install or Update Puppet Desk.cmd**. Use the desktop **Puppet Desk** shortcut afterwards. Future updates use **Update Puppet Desk**. No GitHub login, GitHub CLI, Python or compiler is needed.
 
-This repository distributes Puppet Desk and its updater only. Audio Bridge is a separate product and is not included. No puppet artwork or personal profiles are bundled. The application source remains in private development; GitHub's automatic “Source code” ZIP is not the app download.
-
 Windows 11 with .NET Framework 4.8 or later is recommended. The executable is unsigned. Updates preserve local settings and retain a previous version for rollback.
 
 ## Full user manual
@@ -461,19 +459,12 @@ Avoid running multiple copies at once because they write to the same files.
 
 ## 15. Sharing Puppet Desk
 
-After building, you may share Puppet Desk.exe without the BAT, CS or ICO files.
-The recipient needs the Windows components required by the app. The build
-script does not install those components.
+Share Puppet Desk using its official GitHub page:
+https://github.com/anonimations696/Puppet-Desk
 
-The EXE contains the rag-doll app icon, program code and developer credit. Your
-selected puppet/hand drawings, movie files, saved names and personal artwork
-paths are stored separately and are not added to the EXE when you use it.
-
-Share just the EXE, optionally with this README, if the recipient will use their
-own artwork. Sharing your settings folder additionally exposes saved paths
-and configuration details. Sharing a ready-made character also requires its
-artwork and reselecting paths as necessary; there is no one-click portable
-character export/import feature yet.
+Only trust Puppet Desk downloads and updates from this original repository and
+its Releases page. Do not trust download links, mirrors or copies hosted elsewhere,
+even if they use the Puppet Desk name or logo. Share the official link above.
 
 
 ## 16. OBS Window Capture setup
