@@ -35,6 +35,7 @@ CONTENTS
   19. OBS settings — Connection, character scenes and puppet scene overrides
   20. Update Puppet Desk / Rollback Puppet Desk
   21. Minimize puppet / Restore puppet
+  22. Donate
 
 
 ## 1. Puppet Desk overview
@@ -673,3 +674,10 @@ Window Capture source. If needed, select the PuppetDesk Puppet window again.
 All your saved characters and OBS scene-switching assignments are preserved.
 The old browser-output.txt settings file is ignored and can be left alone.
 The app no longer runs the local Browser output server.
+
+
+## 22. Donate
+
+Click **Donate** at the top of **Puppet Desk Controls** to open the support dialog. It links to [@DemonSir696 on X](https://x.com/DemonSir696) and explains how to support future Puppet Desk projects, including Puppet Desk Audio Bridge.
+
+The X Money instructions apply when that feature is available to your X account. Review the recipient and payment details in X before sending. Puppet Desk does not collect payment details or process donations. Click **Close** to return to the controls.
