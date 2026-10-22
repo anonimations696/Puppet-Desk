@@ -1,6 +1,8 @@
-# Puppet Desk
+# Puppet Desk — Free PNGTuber & VTuber Software for Windows
 
-**Developed by Hate and LaMDA.** A standalone Windows puppet app for streaming.
+**Developed by Hate and LaMDA.** Puppet Desk is free PNGTuber and 2D VTuber software for Windows. Turn your own character images into a voice-reactive streaming avatar, with microphone-driven talking, automatic blinking, layered hands and props, and OBS scene switching.
+
+Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos with OBS Studio. Save six characters with three puppet profiles each, switch views with hotkeys, and position, resize, rotate, or mirror your hand layers. Your microphone drives the mouth states; no webcam or face tracking is required.
 
 [**Download Puppet Desk for Windows**](https://github.com/anonimations696/Puppet-Desk/releases/latest/download/PuppetDesk-Windows.zip) · [Release notes](https://github.com/anonimations696/Puppet-Desk/releases)
 
