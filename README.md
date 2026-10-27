@@ -12,6 +12,10 @@ Download **PuppetDesk-Windows.zip** from Releases, extract it, and run **Install
 
 Windows 11 with .NET Framework 4.8 or later is recommended. The executable is unsigned. Updates preserve local settings and retain a previous version for rollback.
 
+## New in 1.2.0 — Hand Studio Update with Live Hand Puppeteering Window
+
+Create gestures in **Hand Animation Studio** with blue motion keys, automatic pose saving, thumbnail image clips, drag-and-drop replacement, split/trim tools and Undo/Redo. Perform with saved gestures in the separate **Live Hand Puppeteering** window. Each character has its own saved hand library.
+
 ## Full user manual
 
 Find sections by the names printed on the controls. Use Ctrl+F for a control name.
@@ -40,7 +44,11 @@ CONTENTS
   20. Update Puppet Desk / Rollback Puppet Desk
   21. Minimize puppet / Restore puppet
   22. Donate
-  23. Open Hands window / Hand keyframes — create, select, move, copy, paste, save and play
+  23. Hand Animation Studio
+  24. Hand keyframes — automatic saving, timing, copy and paste
+  25. Image-clip timeline — add, drag, stretch, split and replace
+  26. Animation name / Save / Saved hands / Load saved / Undo keyframe
+  27. Hands — Live Hand Puppeteering
 
 
 ## 1. Puppet Desk overview
@@ -101,13 +109,13 @@ and press Enter/Save, or Escape/Cancel. Hover to see a long name in full.
 
 Below that, the sections appear in this order:
   Puppet views
-  Hands (Open Hands window)
+  Hands — Live Hand Puppeteering / Hand Animation Studio
   Microphone
   View pictures
   Key bindings
   Copy view report / Exit Puppet Desk / developer credit
 
-Hand joints is inside the Hands window. Microphone, View pictures and Key bindings can collapse by
+Hand joints is inside Hand Animation Studio. Microphone, View pictures and Key bindings can collapse by
 clicking their headings. Click again to expand. Collapsing a section hides
 its controls; it does not disable its features. Collapse state is not currently
 saved between launches.
@@ -232,8 +240,8 @@ that hand independently, unless its joint is locked.
 
 ## 9. Hands — Load, Select, Hand off / Hand on, Clear, Size, Rotate, Mirror, Play / Pause, Reset hand pose
 
-Click Open Hands window to access the hand controls and joints. See section 23
-for keyframe animation and saved presets.
+Click Hand Animation Studio to access the hand controls and joints. See sections 23–27
+for keyframes, image clips, saved presets and live puppeteering.
 
 Left hand and Right hand are independent overlay slots. They can also hold
 props such as a martini glass, gavel, or other artwork.
@@ -565,7 +573,7 @@ Current limits:
   - One pivot per hand; no automatic skeletal bending or face tracking.
   - GIFs are still pictures in this workflow.
   - Video support depends on Windows codecs.
-  - No built-in project packaging, video editor, virtual camera or export.
+  - No built-in project packaging, movie trimming/speed editing, virtual camera or video export.
   - Windows behaviour must be checked on the recipient's actual PC; source
     syntax checks alone do not verify capture, drivers or movie decoding.
 
@@ -692,119 +700,162 @@ Click **Donate** at the top of **Puppet Desk Controls** to open the support dial
 The X Money instructions apply when that feature is available to your X account. Review the recipient and payment details in X before sending. Puppet Desk does not collect payment details or process donations. Click **Close** to return to the controls.
 
 
-## 23. Open Hands window / Hand keyframes
+## 23. Hand Animation Studio
 
-### Open Hands window
-  Click Open Hands window in the main controls. This opens a separate,
-  resizable editor containing both hand slots, Hand joints and Hand keyframes.
-  Click either the main controls or Hands to bring that window forward.
-  Closing Hands with X hides the editor; it does not exit Puppet Desk or
-  stop a playing animation. Use Open Hands window to reopen it.
+Click **Hand Animation Studio** in the main controls to create and edit hand animations. It replaces the former **Open Hands window** editor. The Studio contains both hand slots, joints, blue motion keyframes, an image-clip timeline and a preview of the puppet with its hands.
 
-  Hands is a tool window excluded from OBS automatic Window Capture matching.
-  Continue capturing PuppetDesk Puppet, not the controls. Global Left / Front /
-  Right hotkeys remain active while Hands is active when Global is checked.
+Use the Studio when making animations; use **Hands — Live Hand Puppeteering** when performing with saved animations. Both windows are independent: click a window to bring it forward. Their X buttons hide them without closing Puppet Desk or stopping an animation. Use the playback controls to stop it.
 
-### Left hand / Right hand
-  Choose the hand to animate using the dropdown in Hand keyframes or the
-  Select Left hand / Select Right hand buttons. Each slot plays independently.
-  The slots are layers, not automatic left/right versions of the same image.
-  Load a still picture or movie using the matching Load hand button.
+The output window is still named **PuppetDesk Puppet**, and the main controls are still **Puppet Desk Controls**. Keep OBS Window Capture pointed at **PuppetDesk Puppet**. The Studio and live hand windows are tool windows excluded from normal OBS capture matching.
+
+### Left hand / Right hand / Load Left hand / Load Right hand
+
+Choose the slot in the animation dropdown or with **Select Left hand** / **Select Right hand**. Load a PNG, JPG, BMP, GIF still image or a movie supported by Windows. The two hand slots play independently. They are separate layers, not automatically mirrored copies.
+
+Use **Size**, **Rotate** and **Mirror** to match the artwork to your puppet. Size arrows change the width by one pixel; rotation arrows change the angle by one degree. Hold the left mouse button on an arrow to repeat the adjustment. Mouse-wheel scrolling does not adjust these sliders.
+
+**Match size from Left** copies the left hand's width to the right hand; **Match size from Right** copies the right hand's width to the left. Each hand retains its own image proportions.
+
+### Preview / Hand joints
+
+The embedded preview shows the puppet and both hands. Select the layer to manipulate, then hold the left mouse button and drag in the preview. The Studio preview moves the selected layer.
+
+Use **Pin left hand** / **Pin right hand** to pick a rotation pivot on that hand. Rotation then works around that point. **Lock joint** prevents independent dragging and repinning; unlock it to reposition the hand. Collapse **Hand joints** once configured. Hands and their saved motion are relative to the puppet, so they follow its position and scale.
 
 ### Create an animation: facepalm example
-  1. Load your facepalm hand and select it.
-  2. Set Time (seconds) to 0.00. Position, size and rotate the hand where the
-     gesture should begin. Unlock its joint if you need to drag it.
-  3. Click Add / replace key. A blue circle appears at that time.
-  4. Set Time (seconds) to 1.00. Move the hand to the forehead and adjust its
-     rotation and size, then click Add / replace key again.
-  5. To hold the facepalm, copy that key and paste it at a later time. To return
-     to the starting pose, copy the first key and paste it after the hold.
-  6. Enter an Animation name, click Save, then Play animation.
 
-### Add / replace key
-  Captures the currently posed hand at the time shown. A key stores position,
-  size, rotation, pivot, mirror and visibility. Adding at an existing key's
-  exact time replaces that key. Add at least two keys at different times to
-  play an animation. Position, size and rotation interpolate between keys;
-  mirror and visibility change at their key times. Gestures follow the
-  puppet's position and scale when you move or resize its body.
+1. Load the facepalm hand, select it and set **Time (seconds)** to 0.00.
+2. Position, resize and rotate it for the start of the gesture. Click **Add / replace key**.
+3. Set the time to 1.00, move the hand to the forehead and click **Add / replace key**.
+4. Copy that key and paste it later to hold the pose. Paste a copy of the first key later still to return to the starting pose.
+5. Enter an **Animation name**, click **Save**, then **Play animation**.
 
-### Blue keyframe circles / selecting and dragging
-  Click a blue circle to select and preview that key. Its outline highlights
-  the selection. Drag it left or right to change its time without changing
-  its saved pose. Release to save the new timing. Keys stop before neighbouring
-  keys so dragging cannot accidentally overwrite another pose.
-  The list below the timeline also lets you select a key and preview its pose.
-  To change a pose, preview the key, adjust the hand, and use Add / replace key
-  at the same time. Previewing alone does not replace a saved key.
+## 24. Hand keyframes — automatic saving, timing, copy and paste
+
+### Add / replace key / Update frame pose
+
+**Add / replace key** captures position, size, rotation, pivot, mirror and visibility at the displayed time. A blue circle marks the key. At an occupied time it replaces that key. **Update frame pose** also captures the current pose at the displayed time.
+
+Position, size and rotation interpolate between keys. Mirror and visibility switch at key times. A still-image clip can hold a pose over its duration; use multiple motion keys to animate movement.
+
+### Automatic keyframe saving
+
+Select an existing blue keyframe and change the hand's position in the Studio preview, size, rotation or mirror setting. Those edits save automatically: you do not need to press **Add / replace key** again. Preview dragging saves when you release the mouse.
+
+At an exact existing key time, pose adjustments can also update that key. Between existing keys, creating a new motion key remains an explicit **Add / replace key** action. Scrubbing, playback and live puppeteering do not automatically rewrite the animation.
+
+### Blue keyframe circles
+
+Click a blue circle to select and preview it. Drag it left or right to retime it; release to save. Keys stop before neighbouring keys to avoid overwriting them accidentally. Selected dots remain selected while using the time arrows or supported pose controls.
 
 ### Time arrows / Time (seconds) / Preview time
-  With a blue dot selected, the left/right arrow buttons move that KEY by
-  0.10 seconds per click and save the timing. It stays selected while using
-  the arrows. Click elsewhere to clear the dot selection.
-  With no dot selected, the arrows rewind/advance the preview time by 0.10
-  seconds. Click or drag empty timeline space to scrub the animation.
-  The orange line shows the current time; the seconds field stays in sync.
-  Typing a time or using the seconds field's up/down buttons chooses the time
-  for a new key without changing the hand's pose. Click Preview time to apply
-  the animation at that time. The timeline expands for longer gestures, with
-  a maximum duration of 120 seconds. Mouse-wheel scrolling does not move it.
+
+With a blue dot selected, the time arrows move that key by 0.10 seconds and save its timing. Without a selected dot, they rewind or advance the preview time. Hold an arrow to repeat.
+
+The orange playhead shows the current time. Click or drag empty motion-timeline space to scrub. Entering a value in **Time (seconds)** chooses the time; click **Preview time** to apply the animation there. The timeline supports up to 120 seconds.
 
 ### Copy keyframe / Paste keyframe
-  Right-click a blue dot and choose Copy keyframe. Right-click the timeline
-  where you want the duplicate and choose Paste keyframe. The new dot keeps
-  the copied pose at the clicked time and saves automatically. Copying keeps
-  a snapshot: editing the original afterwards does not change the copy.
-  Paste repeatedly to repeat a pose or create a hold. At an occupied time,
-  the menu explicitly says Paste keyframe (replace here).
-  Paste is disabled until you copy a key. The copy lasts until the app closes.
 
-### Animation name / Save / Saved hands / Load saved
-  Give the gesture a recognisable name, such as Facepalm or Martini, and click
-  Save. Adding, deleting, pasting and retiming keys also save automatically.
-  Click Save after changing the name or Loop preference.
-  Saved hands lists the saved hand animations. Choose one and click Load saved
-  to load its artwork and keys into the selected Left or Right hand slot.
-  Loading an animation immediately positions that hand at its first saved
-  pose. It does not start playback automatically.
+Right-click a blue dot and choose **Copy keyframe**. Right-click the motion timeline at the desired time and choose **Paste keyframe**. The copied pose is saved at that time. Copying makes a snapshot, so later edits to the original do not change the copy.
 
-  Example: save Facepalm, load a martini hand and save its own keys, then choose
-  Facepalm in Saved hands and Load saved. Play animation runs Facepalm's saved
-  gesture again. You can also reload the original file with Load hand.
-
-  There is ONE saved animation per hand file's full path. Different files
-  keep separate animations, including files with the same name in different
-  folders. Loading the same file uses the same saved preset across slots and
-  characters; saving replaces that file's preset. Keep artwork in its original
-  location: renaming or moving it changes the association. Changing Animation
-  name labels the preset; it does not create another preset for the same file.
-
-### Play animation / Pause / Stop / restore / Loop
-  Play animation runs the keyframes for the selected hand. It works for still
-  PNGs as well as movie layers. Pause holds the current animation position.
-  Play animation resumes, or restarts when already at the end. At the end,
-  a non-looping animation holds its final pose. Loop repeats the sequence.
-  Stop / restore stops and restores the hand's pose from before preview or
-  playback. Switching character or puppet profile stops its hand animations.
-  Movie Play / Pause controls the video clip separately from Play animation.
-
-### Hand off / Hand on
-  These buttons describe the NEXT action. Clicking either stops that hand's
-  keyframe playback, restores its normal pose and hides/shows it as requested.
-  A visible hand remains visible when you select the other hand or puppet.
-  Movie playback is separate. Loading a hand turns it on; Clear removes it
-  from the slot without deleting the artwork or its saved animation.
+At an occupied time the option says **Paste keyframe (replace here)**. Copy once and paste repeatedly to create holds or repeated poses. The clipboard copy lasts for the app session.
 
 ### Delete key / Clear keys
-  Select a key, then Delete key to remove it and save the change. Clear keys
-  asks before removing all keys from this hand's preset. It does not delete
-  the hand artwork. Keyframe edits are not included in puppet Undo/Redo.
 
-### Saved animation files
-  Presets are stored in %APPDATA%\PuppetDesk\hand-animations as JSON files.
-  Updates preserve them along with your other local settings. Back up this
-  folder and the original artwork if you want to keep copies. The preset
-  records the artwork path, not a copy of the picture or movie. There is no
-  portable animation export/import button. Public and development settings
-  remain separate; development presets are not automatically copied to public.
+Select a dot and use **Delete key** to remove it. **Clear keys** asks before clearing the animation. Neither deletes the original artwork. See **Undo keyframe / Redo keyframe** below.
+
+## 25. Image-clip timeline — add, drag, stretch, split and replace
+
+The thumbnail strip controls which still image is displayed and for how long. The blue-dot timeline controls movement. Use them together for an open hand changing into a clenched fist while the arm moves.
+
+### Add image frame / drag and drop
+
+Use **Add image frame** to browse for an image, or drag an image file from Windows into empty image-timeline space at the desired time. Adding an image frame creates a pose key and a timed image clip. PNG, JPG/JPEG, BMP and GIF still images are supported.
+
+The file picker remains available; drag and drop is an additional option.
+
+### Stretch / trim / move a clip
+
+Select a thumbnail clip. Drag its left or right edge to shorten or extend the image's displayed duration. Drag the clip body left or right to move it. Neighbouring clips limit movement and trimming so clips do not overlap.
+
+The image strip and blue keys are separate: moving or trimming an image clip does not retime the motion keys. Gaps in the image sequence hide the hand during those gaps.
+
+### Split at playhead / Delete clip
+
+Place the orange playhead inside a clip and click **Split at playhead**. This makes two image segments without changing the existing motion keys. Select a clip and click **Delete clip** to remove that segment.
+
+### Replace an image by dropping onto a clip
+
+Drop one image file directly onto an existing clip to replace its picture. This preserves that clip's timing and the animation's position, size and rotation. You can split a clip, then replace just one segment—for example, an open hand becoming a fist. The same drop-to-replace action works on a blue key or a thumbnail in **View details**.
+
+### Movie files and current editing limits
+
+Movie files still work as hand layers, and keyframes can animate their position, size and rotation. The hand's movie **Play / Pause** controls video playback separately from **Play animation**.
+
+The thumbnail clip editor edits still-image durations. It does not trim movie footage, change video playback speed, stretch video or export a rendered video. GIF files are treated as still images. Movie decoding depends on the codecs available in Windows.
+
+### View details
+
+Click **View details** to open the keyframe information and image list in a separate window. Close it with X when finished; the Studio stays open.
+
+## 26. Animation name / Save / Saved hands / Load saved / Undo keyframe
+
+### Saving and character-specific hand libraries
+
+Enter an **Animation name**, then click **Save**. Click **Save** after changing the name or **Loop** preference. Adding, replacing, deleting, pasting and retiming keys, editing image clips and adjusting an existing key's pose save automatically.
+
+Each of the six characters has its own saved hand library. The three puppet profiles within that character share its library, while each profile retains its own loaded hand slots and setup. A hand saved for Agent Hate does not appear in Vader's library.
+
+There is one saved animation per full hand-file path within each character. Different files—even identically named files in different folders—can have separate presets. Using the same file in another character gives that character its own preset. Renaming an animation changes its label; it does not create a second preset for the same file.
+
+Choose a preset in **Saved hands** and click **Load saved**. The artwork and animation load into the selected hand slot at its first saved pose. Playback does not begin automatically. Save a facepalm, load and save a different martini hand, then reload either gesture whenever needed.
+
+### Play animation / Pause / Stop / restore / Loop
+
+**Play animation** plays or resumes the saved gesture. **Pause** holds the current pose. A non-looping gesture holds its final pose; **Loop** repeats it. **Stop / restore** returns to the pose from before preview/playback. Switching character or puppet profile stops its animations.
+
+### Undo keyframe / Redo keyframe
+
+The Studio's **Undo keyframe** and **Redo keyframe** buttons reverse and restore saved animation edits, including dropped/replaced pictures, added or deleted keys, timing changes, clip splits/trims and automatically saved pose changes.
+
+Use **Ctrl+Z** to undo and **Ctrl+Y** or **Ctrl+Shift+Z** to redo while the Studio is active. Animation history is separate from the main controls' puppet setup history. It is session history, not a permanent version archive; up to 100 animation edits are retained per hand/character during the session.
+
+### Saved animation files and older presets
+
+Public presets are saved under **%APPDATA%\PuppetDesk\hand-animations\character-1** through **character-6**. Updates preserve these settings. Existing legacy presets are copied into a character's library when their hand file is loaded; the legacy copy is retained.
+
+Back up the hand-animations folder and the original image/movie files. Presets store file paths, not embedded artwork. Moving or renaming artwork can break the association. There is no portable animation export/import button. Public and development settings remain separate.
+
+## 27. Hands — Live Hand Puppeteering
+
+Click the wide **Hands — Live Hand Puppeteering** button in the main controls. This opens the performance window for using saved hands without keeping the Studio open. Its header identifies the active character and puppet profile.
+
+### Load saved / Load file...
+
+Each hand has a dropdown listing the active character's saved animations. Pick one and click **Load saved**. Use **Load file...** to choose artwork directly. Changing character refreshes the libraries to that character's hands.
+
+### Select left hand / Select right hand / drag in the preview
+
+Use the selection buttons or click a visible hand in the preview. Hold the left mouse button and move it to puppet the hand in real time. Dragging pauses that hand's keyframe playback. Unlock its joint in the Studio if you need to move a locked hand.
+
+Live dragging changes the performance pose; it does not overwrite the saved keyframes. The selected hand is highlighted in the preview.
+
+### Play / Pause / Stop
+
+Each hand has independent playback controls for its saved keyframe animation. These are separate from a movie file's own playback controls.
+
+### Reset to original position
+
+This stops the hand's keyframe animation and restores the original pose remembered for that loaded hand in the current character/profile. Loading a saved animation establishes its starting pose for reset. Use it to recover after moving a hand during a performance.
+
+### Hand off / Hand on / Size / Rotate / Mirror
+
+The visibility button says what clicking it will do: **Hand off** hides a visible hand; **Hand on** shows it. Changing selection does not hide the other hand.
+
+Adjust size, rotation and mirroring independently for either hand. The size and rotation arrows support press-and-hold repetition. Live adjustments do not rewrite saved animation keys.
+
+### Open Hand Animation Studio / window behaviour / hotkeys
+
+Click **Open Hand Animation Studio** when you need to edit or create a saved animation. Close either hand window with X to hide it; playback can continue.
+
+Click the main controls, Studio or live window to bring that window forward. With **Global (also active in other applications)** checked, the assigned Left / Front / Right hotkeys remain active while either hand window is active. With Global off, view hotkeys are restricted to the main controls.
