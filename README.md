@@ -12,6 +12,12 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## New in 1.3.1 — Puppet slots and connection colours
+
+Right-click any puppet slot and choose Clear puppet slot to reset its artwork assignments, hands, settings, name and OBS scene override. The confirmation names the destination and defaults to No. Your original files stay on disk. Paste puppet also asks before replacing an existing setup, including a slot you have only renamed.
+
+The top row of Puppet Desk Controls is red while hosting and green while connected to a host as a client. Offline, connecting and Host · Ready use the default colour.
+
 ## New in 1.3.0 — Multiplayer and guest artwork
 
 Host one puppet and up to three guests. Each guest gets their own OBS Window Capture target. The host can import offered pictures into any of six characters' three puppet slots. Locally, **Copy puppet** / **Paste puppet** duplicates a full setup, including its hands and saved hand animations.
