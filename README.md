@@ -12,9 +12,13 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
-## New in 1.3.1 — Puppet slots and connection colours
+## Public 1.3.1 · Build 48 — Puppet slots and connection colours
 
-Right-click any puppet slot and choose Clear puppet slot to reset its artwork assignments, hands, settings, name and OBS scene override. The confirmation names the destination and defaults to No. Your original files stay on disk. Paste puppet also asks before replacing an existing setup, including a slot you have only renamed.
+Build 48 is the application build shown by both editions for this release. GitHub Actions run 50 produced the development Build 48 package. The run number identifies a build job; it is not the Puppet Desk version.
+
+**Copy puppet / Paste puppet:** Right-click the source puppet button and choose Copy puppet. Then right-click the destination puppet button and choose Paste puppet. You can copy between any of the 18 slots (six characters, three puppets each). If the destination is occupied, even if it has only been renamed, “Replace existing puppet?” names the destination and defaults to No. Yes replaces it; No leaves it alone.
+
+**Clear puppet slot:** Right-click the puppet button and choose Clear puppet slot. Check the character and puppet named in “Clear puppet slot?” before choosing Yes. The default is No. Confirming resets that slot's view and hand assignments, settings, name and OBS scene override. Other slots, original media and saved hand presets stay on disk.
 
 The top row of Puppet Desk Controls is red while hosting and green while connected to a host as a client. Offline, connecting and Host · Ready use the default colour.
 
@@ -154,7 +158,7 @@ setups. Only the selected character and puppet setup is displayed.
 
 ## 2. Install or Update Puppet Desk
 
-Extract the complete download ZIP and double-click Install or Update Puppet Desk.cmd.
+Download Install-Puppet-Desk.exe from the official GitHub Releases page and run it once.
 The installer downloads and verifies the published app, creates desktop shortcuts,
 and keeps a rollback copy when updating. No compilation is needed.
 Launch from the Puppet Desk desktop shortcut. Close the app before updating.
@@ -545,8 +549,7 @@ slots, alignment and leaving name fields. Close normally with X or Exit Puppet
 Desk to save the latest adjustments. A forced process termination can lose
 changes made since the last save.
 
-Artwork and movies remain in their original folders. Settings contain paths
-to them, not copies of their contents. Renaming or moving a selected file can
+Manually selected media normally stays in its original folders. Guest artwork imports and hand media duplicated by Paste puppet have their own saved copies. Settings reference the assigned files. Renaming or moving a selected file can
 prevent it loading next time; use its picker to select the new location.
 
 To back up a setup, close the app, copy the settings folder, and separately
@@ -752,7 +755,7 @@ The distributed ZIP contains no personal OBS settings or passwords.
 ## 20. Update Puppet Desk / Rollback Puppet Desk
 
 Close Puppet Desk, then use the Update Puppet Desk desktop shortcut.
-The first installation uses Install or Update Puppet Desk.cmd and its PS1 companion.
+First installation: run Install-Puppet-Desk.exe. After installation, use Update Puppet Desk.
 The public updater downloads the latest published stable Puppet Desk release.
 No GitHub account or GitHub CLI is needed. Your settings remain in AppData.
 
