@@ -6,11 +6,89 @@
 
 Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos with OBS Studio. Save six characters with three puppet profiles each, switch views with hotkeys, and position, resize, rotate, or mirror your hand layers. Your microphone drives the mouth states; no webcam or face tracking is required.
 
-[**Download Puppet Desk for Windows**](https://github.com/anonimations696/Puppet-Desk/releases/latest/download/PuppetDesk-Windows.zip) · [Release notes](https://github.com/anonimations696/Puppet-Desk/releases)
+## Install or update
 
-Download **PuppetDesk-Windows.zip** from Releases, extract it, and run **Install or Update Puppet Desk.cmd**. Use the desktop **Puppet Desk** shortcut afterwards. Future updates use **Update Puppet Desk**. No GitHub login, GitHub CLI, Python or compiler is needed.
+[**Download the Windows installer**](https://github.com/anonimations696/Puppet-Desk/releases/latest/download/Install-Puppet-Desk.exe) · [Official release page](https://github.com/anonimations696/Puppet-Desk/releases/latest)
 
-Windows 11 with .NET Framework 4.8 or later is recommended. The executable is unsigned. Updates preserve local settings and retain a previous version for rollback.
+Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
+
+## New in 1.3.0 — Multiplayer and guest artwork
+
+Host one puppet and up to three guests. Each guest gets their own OBS Window Capture target. The host can import offered pictures into any of six characters' three puppet slots. Locally, **Copy puppet** / **Paste puppet** duplicates a full setup, including its hands and saved hand animations.
+
+### HOST — Mode > Host / Connection > Start Hosting…
+Choose Mode > Host, then Connection > Start Hosting… . On first use,
+Puppet Desk downloads its tunnel helper. Wait for Manage Guests to open.
+Click Copy invite and send the invitation privately to each performer.
+The installer download and the room invitation are separate. Guests use the invitation to connect. One host can accept three guests.
+
+### CLIENT — Connect to Host… / Offer puppet artwork…
+Select the character and puppet profile you want the host to see. Check
+that its Front and Right pictures are loaded on your PC.
+Leave Mode on Client. Click Connection > Connect to Host…, paste the
+invitation and connect. Choose Yes when asked to offer your artwork.
+If you skipped the prompt, use Connection > Offer puppet artwork… .
+The host must accept your offer before the pictures upload.
+
+### HOST — Manage Guests… / Import artwork and assign
+Open Connection > Manage Guests… . Select the connection marked
+Artwork offered. Guests appear by connection ID; having them join one
+at a time makes them easier to identify.
+Under Host artwork (saved character and puppet), choose the destination.
+Example: select Character 4 / Puppet 1, then click Import artwork and
+assign. Check the destination in the confirmation and click Yes.
+The host's names and slot numbers do not need to match the client's.
+
+This replaces the destination's eight view assignments, including empty
+ones. Use a spare slot if you want to keep its existing setup. Original
+files on disk and the destination's other settings are retained.
+After import, Puppet Desk assigns that slot to the guest and opens its
+puppet output window. The pictures stay on the host PC after disconnect
+or restart. Find the PNG copies under:
+%APPDATA%\PuppetDesk\character-4\received-artwork\puppet-1
+Each import has its own subfolder; the numbers follow your chosen slot.
+
+Already have the artwork? Select the guest and your existing puppet
+profile, then click Assign puppet instead. No download is necessary.
+
+### WHAT TRANSFERS / OBS WINDOW CAPTURE
+Artwork: Front and Right each have idle, talk, blink and talk-blink
+pictures. Left mirrors Right. View assignments are preserved even if
+filenames match. No hands, hand animations or client folder paths are
+included. The transfer limit is 32 MB of PNG data; each picture must
+fit within 4096 pixels per side and 8 megapixels, with 32 megapixels
+total across the puppet.
+
+Live performance: facing, mouth and blink states go to the host. Use
+your normal voice call for sound. In OBS on the host PC, add a Window
+Capture for the guest's named puppet window. Keep the host's own
+capture. Ask the guest to turn Left, then Front, to check the assignment.
+
+### LOCAL ONLY — Copy puppet / Paste puppet
+Right-click a puppet name under a character and choose Copy puppet.
+Select the destination character, right-click its destination puppet
+name and choose Paste puppet. All six characters have three slots:
+for example, copy Character 1 / Puppet 3 into Character 4 / Puppet 1.
+
+This copies the puppet name, view assignments, both hand layers and
+their saved animations, position, size, rotation, joints, visibility,
+profile settings and OBS scene override. Hand media is copied locally;
+view pictures and animation image clips still refer to existing files.
+Shared microphone preferences still apply. Pasting into an inactive
+slot does not put it on air. The clipboard lasts until the app closes.
+To duplicate an imported guest puppet, import it first, then use these
+commands on the host PC. Copy/Paste does not transfer hands over the network.
+
+### DISCONNECT / TROUBLESHOOTING
+Connected but no puppet window? The host must use Assign puppet or
+finish Import artwork and assign. Connecting alone opens no window.
+No artwork offer? Use Puppet Desk 1.3.0 or later on both PCs, start the room
+with Start Hosting…, load the guest's pictures and choose Offer puppet
+artwork… on the client. The custom relay option is for manual assignment.
+To leave, the guest chooses Connection > Disconnect. The host can close
+the room for everyone with Connection > End Show… . Starting a new room
+creates a new invite; the old invite will no longer work.
+
 
 ## New in 1.2.0 — Hand Studio Update with Live Hand Puppeteering Window
 
