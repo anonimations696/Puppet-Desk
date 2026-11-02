@@ -12,6 +12,10 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## Public 1.4.0 · Build 49 — Front and side hands
+
+Hand Animation Studio uses a 25 fps editing timeline. Each arrow press steps one frame (0.04 seconds), or moves the selected key by one frame. Each character has separate Front and Side hand libraries in Studio and Live Hand Puppeteering. Existing hands stay in Front. Load and save a hand facing Left or Right to use it on both sides; turning the other way mirrors the artwork and animation.
+
 ## Public 1.3.2 · Build 48 — Hand Animation Studio
 
 Select a hand in the Studio. Left-drag it in the Studio preview or the actual puppet output window to move it. Shift+left-drag horizontally to rotate; Ctrl+left-drag horizontally to resize. When the Studio is editing, these changes save at the current time. An edit between keys adds a motion key. Playback and live puppeteering do not rewrite saved keys.
