@@ -12,6 +12,15 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## Public 1.3.2 · Build 48 — Hand Animation Studio
+
+Select a hand in the Studio. Left-drag it in the Studio preview or the actual puppet output window to move it. Shift+left-drag horizontally to rotate; Ctrl+left-drag horizontally to resize. When the Studio is editing, these changes save at the current time. An edit between keys adds a motion key. Playback and live puppeteering do not rewrite saved keys.
+
+The full-width motion and image timelines share a time scale. Scroll the wheel over a timeline to zoom around the pointer; use the scrollbar below to pan. Click a blue key and press Ctrl+C, move the playhead and press Ctrl+V to paste. Pasting at an occupied time replaces that key.
+
+In Live Hand Puppeteering, choosing a saved hand in either dropdown loads it immediately into that hand slot.
+
+
 ## Public 1.3.1 · Build 48 — Puppet slots and connection colours
 
 Build 48 is the application build shown by both editions for this release. GitHub Actions run 50 produced the development Build 48 package. The run number identifies a build job; it is not the Puppet Desk version.
@@ -829,7 +838,7 @@ Position, size and rotation interpolate between keys. Mirror and visibility swit
 
 Select an existing blue keyframe and change the hand's position in the Studio preview, size, rotation or mirror setting. Those edits save automatically: you do not need to press **Add / replace key** again. Preview dragging saves when you release the mouse.
 
-At an exact existing key time, pose adjustments can also update that key. Between existing keys, creating a new motion key remains an explicit **Add / replace key** action. Scrubbing, playback and live puppeteering do not automatically rewrite the animation.
+At an exact existing key time, pose adjustments can also update that key. Editing between keys adds a motion key at the playhead. Scrubbing, playback and live puppeteering do not automatically rewrite the animation.
 
 ### Blue keyframe circles
 
