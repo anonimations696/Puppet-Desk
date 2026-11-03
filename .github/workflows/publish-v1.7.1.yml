@@ -1,4 +1,4 @@
-name: Publish Puppet Desk 1.7.1
+name: Publish Puppet Desk 1.7.2
 on:
   push:
     branches: [main]
@@ -10,12 +10,12 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Download and verify trusted build artifact
+      - name: Download verified build artifact
         env:
-          ARTIFACT_URL: 'https://sdmntpreastus2.oaiusercontent.com/files/00000000-594c-81f6-b021-af7783eb8709/raw?se=2026-11-03T05%3A08%3A16Z&sp=r&sv=2026-02-06&sr=b&scid=42092d2e-e1a7-5ed4-bdb9-6f2cd65f93e1&skoid=c36a4874-d531-4a8d-99fc-7da0d9143d9c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-02T23%3A59%3A51Z&ske=2026-11-03T23%3A59%3A51Z&sks=b&skv=2026-02-06&sig=aBzf0MoIqWWx4ab0lxXSWRAd9wFg17aU8vVsagh1u2U%3D'
+          ARTIFACT_URL: 'https://sdmntpreastus2.oaiusercontent.com/files/00000000-adc4-81f6-a2c6-8b20e7cfe5f9/raw?se=2026-11-03T05%3A24%3A44Z&sp=r&sv=2026-02-06&sr=b&scid=3957b466-42fb-5717-a657-79db4be60ca6&skoid=c36a4874-d531-4a8d-99fc-7da0d9143d9c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-02T23%3A59%3A48Z&ske=2026-11-03T23%3A59%3A48Z&sks=b&skv=2026-02-06&sig=esQqD0F5XzBw3fuPhh9sQxU8NyDAU2sq2oTz6mRbtdA%3D'
         run: |
           curl --fail --location --retry 3 --retry-delay 2 --output public.zip "$ARTIFACT_URL"
-          echo '95aac00da0930528c0f28d1151e0692b8844f3d753898782cf1bba59bc3d0e0f  public.zip' | sha256sum --check
+          echo '874ec9af8799d5bfe036a7eaa6a7b8d35039cb9e94703f6fa3d5357e255c1162  public.zip' | sha256sum --check
           mkdir assets
           unzip -q public.zip -d assets
           (cd assets && sha256sum --check SHA256SUMS.txt)
@@ -23,19 +23,20 @@ jobs:
           from zipfile import ZipFile
           import json
           with ZipFile('assets/PuppetDesk-Windows.zip') as z:
-              obj=json.loads(z.read('build-info.json').decode('utf-8-sig'))
-          assert obj.get('application') == 'PuppetDesk' and obj.get('channel') == 'Public'
-          assert obj.get('version') == '1.7.1' and obj.get('buildNumber') == '68'
-          assert obj.get('commit') == '465baafa10050c6934b0215415613573e9ee33f7'
-          print('Verified Puppet Desk Public 1.7.1, shared application Build 68')
+              info=json.loads(z.read('build-info.json').decode('utf-8-sig'))
+          assert info.get('application') == 'PuppetDesk'
+          assert info.get('channel') == 'Public'
+          assert info.get('version') == '1.7.2'
+          assert info.get('buildNumber') == '69'
+          assert info.get('commit') == '70981f769682922b817f57cef43f7934979ea935'
+          print('Verified Puppet Desk v1.7.2 Build 69')
           PY
-      - name: Publish executable assets as a GitHub release
+      - name: Publish release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view v1.7.1 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo 'Release v1.7.1 already exists; checking assets.'
-            gh release upload v1.7.1 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --clobber
+          if gh release view v1.7.2 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload v1.7.2 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --clobber
           else
-            gh release create v1.7.1 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target main --title 'Puppet Desk 1.7.1' --notes 'Public application Build 68, synchronized with Development Build 68. Includes refreshed host guest sizing and connection improvements. Close Puppet Desk and run Update Puppet Desk to install.'
+            gh release create v1.7.2 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target main --title 'Puppet Desk 1.7.2' --notes 'Build 69: Keeps hosted guest puppets visible when resized, preserves visual position as transparent capture windows change, and adds Recenter selected puppet beside Guest puppet size in Hosting > Manage Guests. Close Puppet Desk and run your existing Update Puppet Desk shortcut.'
           fi
