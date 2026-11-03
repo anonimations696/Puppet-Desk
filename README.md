@@ -12,6 +12,10 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## Start Hosting and Manage Guests
+
+Choose **Mode → Host**, then **Connection → Start Hosting**. The opening window shows elapsed time while Puppet Desk checks the public room address. Choose **Cancel** to stop. When the room is ready, the same window becomes **Manage Guests**, where you can copy the invitation. To recover a guest window, select the guest and click **Recenter selected puppet** beside **Guest puppet size**.
+
 ## Host-side guest sizing (1.7.0)
 
 Host guest size: In Hosting > Manage Guests, select an assigned guest in Connected guests and drag Guest puppet size. The host’s output window, puppet, and both live hand layers resize together. The host remembers the size per character/puppet slot; guest settings and other performers are unaffected.
