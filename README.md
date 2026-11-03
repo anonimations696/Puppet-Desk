@@ -981,3 +981,14 @@ Adjust size, rotation and mirroring independently for either hand. The size and 
 Click **Open Hand Animation Studio** when you need to edit or create a saved animation. Close either hand window with X to hide it; playback can continue.
 
 Click the main controls, Studio or live window to bring that window forward. With **Global (also active in other applications)** checked, the assigned Left / Front / Right hotkeys remain active while either hand window is active. With Global off, view hotkeys are restricted to the main controls.
+
+
+## Guest-controlled OBS movement (1.8.0)
+
+Both Windows performers use an updated Puppet Desk. Each PC talks only to its own OBS. In OBS > Tools > WebSocket Server Settings enable the server. In Puppet Desk right-click a character name, open OBS settings and save the local port and password (default port 4455). Automatic scene switching is optional. Use an OBS version that reports scene UUIDs. There is no stream key to exchange and no need to start streaming or recording.
+
+Host: Place the guest's Window Capture in the desired scene. Open Hosting > Manage Guests, select the connected guest, then Guest OBS movement. Choose the local scene and its Window Capture, click Allow guest movement, then Done. This works at join time or later, and you can reopen it at any time to revoke movement or reset to the starting position. A scene item can belong to one guest at a time. Choose the item in the actual scene containing it; moving an item inside a nested scene affects all uses of that nested scene.
+
+Client: Join using the normal invitation. In Connection > Follow OBS puppet, choose the local scene and Window Capture, click Follow selected capture, then Done. Drag that capture in the OBS preview. Movement is relative to the starting positions and proportional to canvas size. Stop following ends client tracking. A clean image from the host can be a locked background guide; no image or live preview is required. Guest movement changes only the host scene item's X/Y, never its crop, scale, rotation, layer order or desktop window.
+
+After an OBS interruption the first sample establishes a new baseline. After a room disconnect the position stays put; reconnect and select the capture again, and have the host grant permission again. Older rooms may still support performance controls without offering movement. A custom relay must run the updated room code.
