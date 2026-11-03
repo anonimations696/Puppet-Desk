@@ -12,6 +12,10 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## Microphone input
+
+Open **Microphone → Microphone input**, select the recording device by name and click **Start Mic**. Speak and watch the green level meter. **Refresh** lists newly connected devices. Choose **Windows default input** to follow Windows when starting capture. Puppet Desk remembers the selected input on this PC.
+
 ## Public 1.5.0 · Multiplayer hands
 
 Update **both Windows PCs** and start a new internet room. Once the host assigns the guest a puppet, the guest can open **Connection → Share live hands** and play any gesture from **Live Hand Puppeteering**. Both hands appear in that guest’s existing OBS capture window. Hand position, rotation, size, mirror, on/off, image changes and movie frames follow the guest. The host does not need the original hand files. **Stop sharing hands** hides both layers. This streams the live performance; it does not install editable presets on the host.
