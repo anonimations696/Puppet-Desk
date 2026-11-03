@@ -12,6 +12,10 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## Trusted rejoin and hand animation transfer (1.6.0)
+
+Trusted rejoin and artwork transfer: Update both PCs. Connect to Host remembers the last invitation. New guests open Manage Guests; assign a slot and click Trust this puppet to restore that guest’s assignment on return. A new room requires a new invitation. Offer puppet artwork includes the active character’s saved Front and Side hand animations and their referenced media. Import artwork and assign requires host approval (64 MB per offer). Share live hands streams the performance separately.
+
 ## Microphone input
 
 Open **Microphone → Microphone input**, select the recording device by name and click **Start Mic**. Speak and watch the green level meter. **Refresh** lists newly connected devices. Choose **Windows default input** to follow Windows when starting capture. Puppet Desk remembers the selected input on this PC.
