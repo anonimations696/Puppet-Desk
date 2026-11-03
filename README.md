@@ -12,6 +12,12 @@ Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos
 
 Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
 
+## Public 1.5.0 · Multiplayer hands
+
+Update **both Windows PCs** and start a new internet room. Once the host assigns the guest a puppet, the guest can open **Connection → Share live hands** and play any gesture from **Live Hand Puppeteering**. Both hands appear in that guest’s existing OBS capture window. Hand position, rotation, size, mirror, on/off, image changes and movie frames follow the guest. The host does not need the original hand files. **Stop sharing hands** hides both layers. This streams the live performance; it does not install editable presets on the host.
+
+**Hosting → Manage Guests…** reopens the roster. For a phone guest, use **Copy phone link** to open **Puppet Desk Mobile Connect**. The phone controls facing, mouth and blink; shared hands originate on Windows. For Windows hand editing, Studio also supports **Copy hand**, **Paste hand** across views, and **Delete saved hand**.
+
 ## Public 1.4.0 · Build 49 — Front and side hands
 
 Hand Animation Studio uses a 25 fps editing timeline. Each arrow press steps one frame (0.04 seconds), or moves the selected key by one frame. Each character has separate Front and Side hand libraries in Studio and Live Hand Puppeteering. Existing hands stay in Front. Load and save a hand facing Left or Right to use it on both sides; turning the other way mirrors the artwork and animation.
