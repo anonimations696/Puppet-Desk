@@ -998,3 +998,7 @@ After an OBS interruption the first sample establishes a new baseline. After a r
 ## Mobile Connect with Discord on Android
 
 Android and Discord: Open Mobile Connect using the host’s Copy phone link. If automatic mouth movement stalls, Retry mic requests a fresh microphone stream and may interrupt Discord. To leave the microphone to Discord, select Use touch mouth and hold Hold to open mouth while speaking. Release to close. Start Mic returns to voice activation. Facing and room controls work in either mode.
+
+## Saved mobile pictures
+
+Mobile pictures: Use Copy phone link from the host and open it in the same regular browser on the same phone. Assigned pictures show thumbnails, filenames and save status. New rooms share this browser’s saved slots. Pictures saved on an older temporary room address cannot automatically move to the new address; select them once on the permanent Mobile Connect page. Private browsing, clearing site data and switching browsers can remove or isolate stored pictures.
