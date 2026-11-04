@@ -994,3 +994,7 @@ Host: Place the guest's Window Capture in the desired scene. Open Hosting > Mana
 Client: Join using the normal invitation. In Connection > Follow OBS puppet, choose the local scene and Window Capture, click Follow selected capture, then Done. Drag that capture in the OBS preview. Movement is relative to the starting positions and proportional to canvas size. Stop following ends client tracking. A clean image from the host can be a locked background guide; no image or live preview is required. Guest movement changes only the host scene item's X/Y, never its crop, scale, rotation, layer order or desktop window.
 
 After an OBS interruption the first sample establishes a new baseline. After a room disconnect the position stays put; reconnect and select the capture again, and have the host grant permission again. Older rooms may still support performance controls without offering movement. A custom relay must run the updated room code.
+
+## Mobile Connect with Discord on Android
+
+Android and Discord: Open Mobile Connect using the host’s Copy phone link. If automatic mouth movement stalls, Retry mic requests a fresh microphone stream and may interrupt Discord. To leave the microphone to Discord, select Use touch mouth and hold Hold to open mouth while speaking. Release to close. Start Mic returns to voice activation. Facing and room controls work in either mode.
