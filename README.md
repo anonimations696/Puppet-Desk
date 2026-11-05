@@ -1002,3 +1002,51 @@ Android and Discord: Open Mobile Connect using the host’s Copy phone link. If 
 ## Saved mobile pictures
 
 Mobile pictures: Use Copy phone link from the host and open it in the same regular browser on the same phone. Assigned pictures show thumbnails, filenames and save status. New rooms share this browser’s saved slots. Pictures saved on an older temporary room address cannot automatically move to the new address; select them once on the permanent Mobile Connect page. Private browsing, clearing site data and switching browsers can remove or isolate stored pictures.
+
+
+## Puppet Desk 1.8.4 — sharing, trusted returns and capture windows
+
+### Artwork sharing security
+The host accepts puppet pictures as PNG image data, checks dimensions and decodes
+and rewrites each picture. Saved hand media shared over multiplayer is limited to
+PNG, JPG and JPEG source images, converted to PNG for transfer. Movie-file, GIF
+and BMP attachments cannot be transferred as saved hand media. A package containing
+unsupported saved media is rejected with an explanation; it is not silently omitted.
+Movie hands may still be used locally or shared through Share live hands, which
+sends bounded rendered PNG frames rather than the original movie file.
+
+Saved animation presets contain validated pose/timing settings and references to
+included images. Guest filenames and filesystem paths cannot choose host save
+locations. Received assets use host-generated filenames inside received-artwork.
+Limits: 64 MB total bundle, 32 MB view pictures, 4096 pixels per image dimension,
+8,388,608 pixels per image, and 33,554,432 pixels total in each view/hand image set.
+At most 512 presets, 2048 media files, 1000 keys and 1000 clips per preset are
+accepted; metadata is limited to 2 MB. Live frames are limited to 384 x 384 and
+96 KB each. Room traffic has per-connection message/byte limits; artwork offers
+are limited to three attempts per minute per connection. These checks reduce
+risk; they are not an antivirus guarantee. Keep Windows and Puppet Desk updated.
+
+### Trust this puppet
+In Hosting > Manage Guests, assign a puppet, then click Trust this puppet.
+A returning desktop guest proving the same identity is automatically assigned the
+saved host slot, including its saved size and desktop location. Importing updated
+artwork from that trusted guest preserves trust. Reassigning a trusted guest
+updates the remembered slot. Clearing/replacing a slot removes its old trust;
+a different guest importing into it does not inherit that trust. An occupied or
+unavailable slot still requires host attention rather than displacing a guest.
+Forget trusted puppet and Forget all trusted puppets revoke future automatic
+assignment. Desktop identities depend on the client's Windows account and selected
+character/puppet slot. Mobile guests currently do not provide this desktop return
+identity and require assignment on reconnect.
+
+### Fit capture window
+Open Puppet views > Fit capture window, choose extra padding in pixels, and click
+Fit capture window. It fits around the puppet image canvas and currently visible
+hands across the available puppet views, without moving the artwork on the desktop.
+The window retains its title so existing OBS Window Capture selections remain valid.
+This does not trim transparent pixels inside an artwork file. Hand movement or
+scaling outside the fitted rectangle will be clipped until the window is fitted
+again. Use enough padding for the whole animation. Reset capture window restores
+automatic window sizing. This changes capture dimensions, so check framing in OBS.
+The setting is saved per puppet. For guests, select the guest in Manage Guests and
+use Fit guest capture window; the host's capture settings are saved for that slot.
