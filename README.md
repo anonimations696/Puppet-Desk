@@ -1,7 +1,5 @@
 # Puppet Desk — Free PNGTuber & VTuber Software for Windows
 
-> **Public version temporarily paused:** Version 1.8.5 (build 80) opens a maintenance notice instead of the puppet controls. It includes **Check for updates** and **Exit**; saved artwork and settings are retained. A later update can restore normal operation. Earlier copies that have not installed this update are unaffected.
-
 ![Puppet Desk controls, Hands editor and animated puppet](https://github.com/user-attachments/assets/2b86d325-b221-4713-8ff0-137c1d669e4c)
 
 **Developed by Hate and LaMDA.** Puppet Desk is free PNGTuber and 2D VTuber software for Windows. Turn your own character images into a voice-reactive streaming avatar, with microphone-driven talking, automatic blinking, layered hands and props, and OBS scene switching.
