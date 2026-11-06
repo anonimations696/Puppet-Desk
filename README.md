@@ -6,6 +6,18 @@
 
 Use Puppet Desk for PNGTubing, virtual puppets, livestreams, and recorded videos with OBS Studio. Save six characters with three puppet profiles each, switch views with hotkeys, and position, resize, rotate, or mirror your hand layers. Your microphone drives the mouth states; no webcam or face tracking is required.
 
+## Puppet Desk 1.9.0 · build 85 — licensing and Back view
+
+Puppet Desk is **licensed, not sold**. This update asks you to read and accept the [licence agreement](EULA.txt) before registration. Your artwork remains yours.
+
+> We reserve the right to suspend or revoke a Puppet Desk licence at our discretion, for any reason, to the extent permitted by applicable law.
+
+Mandatory legal rights remain intact. Public installations require a successful first registration. After registration, a last-known active licence works offline without an expiry countdown. A received revocation remains saved offline; new revocations and restorations reach an app at its next online check. Checks occur **when the app opens or when you manually choose Check now**, with no every-minute or network-return checks. A service outage preserves the last verified status. Earlier versions are not remotely changed by this update.
+
+**Mode → Licence status** shows your installation number, service and current status. Development and Public have separate installation records. Owner administration is only in Development; it is not included in this public download.
+
+**Back view:** each puppet can have one Back image, its own hand library and an assignable hotkey (F9 by default). Back has no talking/blinking frames. Left, Front and Right continue working as before.
+
 ## Install or update
 
 [**Download the Windows installer**](https://github.com/anonimations696/Puppet-Desk/releases/latest/download/Install-Puppet-Desk.exe) · [Official release page](https://github.com/anonimations696/Puppet-Desk/releases/latest)

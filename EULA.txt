@@ -1,0 +1,115 @@
+PUPPET DESK — END USER LICENCE AGREEMENT
+Version 2026-11-06-2
+
+Please read before selecting “I accept”. This agreement applies to this updated
+version of Puppet Desk, not retrospectively to earlier versions. If you decline,
+this version exits. Acceptance is not
+recorded merely because you download or install an update. Keep a copy of these
+terms. Material revisions require acceptance again.
+
+1. Permission to use
+The publisher, Hate, grants you a limited, non-exclusive permission to use this
+version of Puppet Desk for your own personal or commercial creative work,
+subject to this agreement. Development builds are provided for testing. Do not
+redistribute a private development build or its access credentials without the
+publisher's permission. Puppet Desk is licensed, not sold. You receive a licence
+to use Puppet Desk, not ownership of Puppet Desk or its intellectual property.
+That licence may be suspended or revoked under the licensing provisions below,
+subject to applicable law. You retain ownership of your own artwork and content.
+
+2. Software and third-party rights
+The publisher retains rights in the software to the extent those rights exist.
+Third-party components retain their own licences and notices; this agreement
+does not override their terms or rights granted by applicable law. You retain
+your rights in your own artwork, recordings and other content. Using Puppet
+Desk does not give you permission to use somebody else's protected material.
+
+3. Acceptable use
+Do not use the software to violate applicable law, distribute malicious files,
+access another person's computer or session without permission, disrupt other
+users or services, impersonate others deceptively, or bypass access controls.
+You are responsible for content you load, record, broadcast or share and for
+obtaining any necessary permissions. Statutory rights are not restricted by
+this paragraph where such restrictions would be unlawful.
+
+4. Multiplayer, sharing and integrations
+Joining rooms and sharing artwork or hands are optional actions. When you offer
+files and the host accepts, the host receives and may retain copies. Removing a
+local file or leaving a room does not remove copies already shared. Protect room
+invitations and review imports. OBS, Discord, network providers and other
+third-party products have separate terms and privacy practices. Availability,
+compatibility, latency and uninterrupted service are not guaranteed.
+
+5. Development risks, updates and backups
+Development software may contain defects, change features or be unavailable.
+Keep backups of your artwork, profiles and recordings. Updates may alter
+behaviour and requirements, which should be described before installation.
+Installing an update does not itself accept revised terms. These terms do not
+promise any particular future feature, update or support period.
+
+6. Warranty and responsibility
+To the fullest extent permitted by applicable law, the software is supplied
+“as is” and “as available”, without warranties of merchantability, fitness for a
+particular purpose or non-infringement. To that same extent, the publisher is not
+liable for indirect, incidental, consequential or special losses arising from
+use or inability to use it. Nothing excludes liability or consumer rights that
+applicable law does not permit to be excluded. Do not rely on this software for
+safety-critical work.
+
+7. Ending use and general provisions
+You may stop using and uninstall the software. Suspension or termination does
+not transfer ownership of your content to the publisher. If part of this
+agreement cannot be enforced, the remainder applies to the extent permitted by
+law. Contact the publisher through the official Puppet Desk project support
+channels with questions or requests. Do not post licence credentials publicly.
+
+8. LICENCE REGISTRATION, CHECKS AND REVOCATION
+By accepting, you agree to the following licensing behaviour:
+
+• The app creates a random installation identifier and secret credential. Once
+  its licensing service is configured and reachable, it registers this
+  installation and receives a licence number. A licence identifies an
+  installation (separately for Development and Public), not a verified person. Copying the same installation data may
+  copy its identity; this is not a hardware fingerprint or identity check.
+• The licensing service receives the installation identifier, a credential for
+  authentication, app build, EULA version, acceptance time and subsequent check
+  times. It stores a credential hash, licence number, status, administrative
+  label/reason and an audit of status changes. It does not receive artwork,
+  recordings, microphone audio, passwords for other services or personal folder
+  paths. Network infrastructure necessarily processes connection addresses;
+  this prototype does not intentionally store client IP addresses in its
+  licence database. A tunnel or hosting provider may keep its own network logs.
+• The publisher can see licence records in an authenticated administration
+  panel. Records are used for licensing, support and access administration,
+  not advertising. Contact project support about access, correction or deletion
+  requests; do not publish your secret installation credential.
+• Both Development and Public licences may be suspended or revoked. Administrative
+  access does not exempt an installation from licence checks. The publisher may
+  label licence records for recognition; a label is not proof of identity.
+• Checks occur when the app starts (including when opened after an update),
+  or when you choose Check now in Licence status or Check again on a startup
+  notice. There is no periodic background check and no automatic check merely
+  because network connectivity returns. A running app learns of a new licence
+  status only at its next startup or manual check.
+  Registration and checks happen only after you accept these terms. A failed
+  connection is not treated as revocation. This development prototype can run
+  with registration pending when the service has not been configured. Public
+  installations require successful registration before first use; after that,
+  a last-known active licence continues offline without an expiry countdown.
+• We reserve the right to suspend or revoke a Puppet Desk licence at our
+  discretion, for any reason, to the extent permitted by applicable law.
+  Mandatory notice, refund and other rights under applicable law remain intact.
+• Once the app receives a verified revoked status, use of the app is disabled
+  and a licence-suspension message is shown. That received status is retained
+  locally: disconnecting from the internet does not restore access. The
+  publisher may restore a licence; the app must receive a verified restoration
+  before access resumes. Contact project support to request review.
+• An already-offline copy cannot receive a new revocation until it reconnects
+  to the licensing service. There is no offline-expiry countdown. Server outages
+  do not by themselves revoke a licence, and a known revocation is not cleared
+  by an outage, reinstalling an update or declining revised terms.
+• Suspension affects Puppet Desk access, not the operation of your computer.
+  The app exits normally. Artwork and settings are not intentionally deleted
+  or encrypted by licence enforcement. You can uninstall the app normally.
+
+This agreement does not exclude rights that applicable law makes non-waivable.

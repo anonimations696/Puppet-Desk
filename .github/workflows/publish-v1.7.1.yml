@@ -1,4 +1,4 @@
-name: Publish Puppet Desk 1.7.2
+name: Publish Puppet Desk 1.9.0
 on:
   push:
     branches: [main]
@@ -9,34 +9,48 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v5
+      - name: Verify owner licensing server readiness
+        run: |
+          curl --fail --silent --show-error --max-time 20 -H 'ngrok-skip-browser-warning: 1' -A 'PuppetDesk/ReleaseReadiness' https://mummified-isolating-unsaved.ngrok-free.dev/health > health.json
+          python3 - <<'PY'
+          import json
+          h=json.load(open('health.json'))
+          assert h.get('Service') == 'PuppetDeskLicensing' and h.get('Ready') is True, 'Service not ready'
+          assert h.get('TermsVersion') == '2026-11-06-2', 'Server update required'
+          assert h.get('PublicKeySHA256') == '03c14daf9df4d8b6b5689071b381c23fcc518e7cd6e87bc87d61cf459fe14530', 'Verification key mismatch'
+          print('Verified live HTTPS server readiness and public verification key')
+          PY
       - name: Download verified build artifact
         env:
-          ARTIFACT_URL: 'https://sdmntpreastus2.oaiusercontent.com/files/00000000-adc4-81f6-a2c6-8b20e7cfe5f9/raw?se=2026-11-03T05%3A24%3A44Z&sp=r&sv=2026-02-06&sr=b&scid=3957b466-42fb-5717-a657-79db4be60ca6&skoid=c36a4874-d531-4a8d-99fc-7da0d9143d9c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-02T23%3A59%3A48Z&ske=2026-11-03T23%3A59%3A48Z&sks=b&skv=2026-02-06&sig=esQqD0F5XzBw3fuPhh9sQxU8NyDAU2sq2oTz6mRbtdA%3D'
+          ARTIFACT_URL: 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-be2c-81f5-80d5-ef8b540d3ff0/raw?se=2026-11-06T23%3A07%3A25Z&sp=r&sv=2026-02-06&sr=b&scid=509fc879-a9a9-4596-b9fe-c72432805046&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-06T18%3A17%3A35Z&ske=2026-11-07T18%3A17%3A35Z&sks=b&skv=2026-02-06&sig=1QdCz6eqUE9RderXsAjPfBtZ%2BvpkBexCyFw9PCpr5a8%3D'
         run: |
-          curl --fail --location --retry 3 --retry-delay 2 --output public.zip "$ARTIFACT_URL"
-          echo '874ec9af8799d5bfe036a7eaa6a7b8d35039cb9e94703f6fa3d5357e255c1162  public.zip' | sha256sum --check
+          curl --fail --location --retry 2 --retry-delay 2 --max-time 60 --output public.zip "$ARTIFACT_URL"
+          echo '1581e95eb561195359fc8da646de824d750df3ef187d9d3c9972c86736ebba64  public.zip' | sha256sum --check
           mkdir assets
           unzip -q public.zip -d assets
           (cd assets && sha256sum --check SHA256SUMS.txt)
           python3 - <<'PY'
           from zipfile import ZipFile
           import json
+          from pathlib import Path
+          assert {p.name for p in Path('assets').iterdir()} == {'Install-Puppet-Desk.exe','PuppetDesk-Windows.zip','SHA256SUMS.txt'}
           with ZipFile('assets/PuppetDesk-Windows.zip') as z:
               info=json.loads(z.read('build-info.json').decode('utf-8-sig'))
+              assert set(z.namelist()) == {'Puppet Desk.exe','README.txt','Update-PuppetDesk.ps1','build-info.json','checksums.json','Install or Update Puppet Desk.cmd'}
+              exe=z.read('Puppet Desk.exe')
+              assert b'for any reason' in exe and b'licensed, not sold' in exe
           assert info.get('application') == 'PuppetDesk'
           assert info.get('channel') == 'Public'
-          assert info.get('version') == '1.7.2'
-          assert info.get('buildNumber') == '69'
-          assert info.get('commit') == '70981f769682922b817f57cef43f7934979ea935'
-          print('Verified Puppet Desk v1.7.2 Build 69')
+          assert info.get('version') == '1.9.0'
+          assert info.get('buildNumber') == '85'
+          assert info.get('commit') == '7f33b16c117968acef4e4982017f92dd80abe071'
+          print('Verified Puppet Desk v1.9.0 Build 85; package contains no owner server')
           PY
       - name: Publish release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh release view v1.7.2 --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh release upload v1.7.2 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --clobber
-          else
-            gh release create v1.7.2 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target main --title 'Puppet Desk 1.7.2' --notes 'Build 69: Keeps hosted guest puppets visible when resized, preserves visual position as transparent capture windows change, and adds Recenter selected puppet beside Guest puppet size in Hosting > Manage Guests. Close Puppet Desk and run your existing Update Puppet Desk shortcut.'
-          fi
+          gh release create v1.9.0 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'Puppet Desk 1.9.0' --notes-file .github/release-notes-1.9.0.md --latest
