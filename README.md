@@ -1,6 +1,6 @@
-# Latest update: 1.9.1 · build 86
+# Latest update: 1.10.0 · build 91
 
-Licence Administration in Development can remain open while using Puppet Desk. Both editions now persist and serialize first-launch identities so simultaneous copies reuse the same saved identity. Existing licence numbers and labels remain intact. The list represents installations, not login events or verified people; removing local licence data or using another Windows account can create another identity. This update does not add account-based activation.
+New installations now require an owner-issued activation code. Existing registered licences retain their number and status. This update adds live revocation notices and licensing connection records; read the updated [licence agreement](EULA.txt) before accepting. Your artwork remains yours.
 
 # Puppet Desk — Free PNGTuber & VTuber Software for Windows
 
@@ -16,11 +16,17 @@ Puppet Desk is **licensed, not sold**. This update asks you to read and accept t
 
 > We reserve the right to suspend or revoke a Puppet Desk licence at our discretion, for any reason, to the extent permitted by applicable law.
 
-Mandatory legal rights remain intact. Public installations require a successful first registration. After registration, a last-known active licence works offline without an expiry countdown. A received revocation remains saved offline; new revocations and restorations reach an app at its next online check. Checks occur **when the app opens or when you manually choose Check now**, with no every-minute or network-return checks. A service outage preserves the last verified status. Earlier versions are not remotely changed by this update.
+Mandatory legal rights remain intact. New installations require an owner-issued activation code and an internet connection for first activation. Existing registered licences retain their number and active/revoked status. After activation, a last-known active licence works offline without an expiry countdown. A received revocation remains saved offline. Checks occur at startup, through **Check now**, and through a persistent status connection while online. If a running app receives a verified revocation, it stops puppet controls and shows a notice requiring the app to close. An offline app cannot receive a new revocation until it reconnects. A service outage preserves the last verified status. Earlier versions are not remotely changed by this update.
 
 **Mode → Licence status** shows your installation number, service and current status. Development and Public have separate installation records. Owner administration is only in Development; it is not included in this public download.
 
 **Back view:** each puppet can have one Back image, its own hand library and an assignable hotkey (F9 by default). Back has no talking/blinking frames. Left, Front and Right continue working as before.
+
+## Activate a licence
+
+Ask the publisher privately for an activation code. Accept the licence agreement, click **Enter activation code**, paste the complete code and click **Activate**. Keep it private and save it securely. The default code allows one installation; Development and Public each consume an activation. Reinstallation or loss of local licence data may require the publisher to reset the activations. There is no in-app request inbox yet.
+
+**Mode → Licence status** shows your licence number and **Check now**. Share that number with the publisher for support. Licensing records include first/last connection IP addresses and a limited connection history after acceptance of the updated agreement. IP addresses do not establish a person's identity. No artwork is uploaded by licensing. See [EULA.txt](EULA.txt) for the data and licensing terms.
 
 ## Install or update
 

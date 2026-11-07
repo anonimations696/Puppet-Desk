@@ -1,5 +1,5 @@
 PUPPET DESK — END USER LICENCE AGREEMENT
-Version 2026-11-06-2
+Version 2026-11-07-2
 
 Please read before selecting “I accept”. This agreement applies to this updated
 version of Puppet Desk, not retrospectively to earlier versions. If you decline,
@@ -67,8 +67,9 @@ channels with questions or requests. Do not post licence credentials publicly.
 By accepting, you agree to the following licensing behaviour:
 
 • The app creates a random installation identifier and secret credential. Once
-  its licensing service is configured and reachable, it registers this
-  installation and receives a licence number. A licence identifies an
+  its licensing service is configured and reachable, a new installation must
+  supply an owner-issued activation code to receive a licence number. Existing
+  registered installations retain their licence and status during this transition. A licence identifies an
   installation (separately for Development and Public), not a verified person. Copying the same installation data may
   copy its identity; this is not a hardware fingerprint or identity check.
 • The licensing service receives the installation identifier, a credential for
@@ -76,9 +77,16 @@ By accepting, you agree to the following licensing behaviour:
   times. It stores a credential hash, licence number, status, administrative
   label/reason and an audit of status changes. It does not receive artwork,
   recordings, microphone audio, passwords for other services or personal folder
-  paths. Network infrastructure necessarily processes connection addresses;
-  this prototype does not intentionally store client IP addresses in its
-  licence database. A tunnel or hosting provider may keep its own network logs.
+  paths. For requests accepting this agreement, the server records the first
+  and most recent IP address used for successful activation/checks, and a recent
+  connection history including failed activation attempts, request time, claimed
+  installation ID, authentication result and HTTP result. The history is limited
+  to 1,000 entries; entries older than 30 days are removed on the next server
+  startup, recorded request or history retrieval. First/last IPs remain with
+  the licence record.
+  IP addresses may be shared, changed or masked by a VPN; they are not proof of
+  identity. Only authenticated owner administration exposes these records.
+  A tunnel or hosting provider may keep its own network logs.
 • The publisher can see licence records in an authenticated administration
   panel. Records are used for licensing, support and access administration,
   not advertising. Contact project support about access, correction or deletion
@@ -88,14 +96,24 @@ By accepting, you agree to the following licensing behaviour:
   label licence records for recognition; a label is not proof of identity.
 • Checks occur when the app starts (including when opened after an update),
   or when you choose Check now in Licence status or Check again on a startup
-  notice. There is no periodic background check and no automatic check merely
-  because network connectivity returns. A running app learns of a new licence
-  status only at its next startup or manual check.
+  notice. While running, the app also maintains an authenticated connection
+  for signed live licence-status notifications. It reconnects after connection
+  loss (normally retrying after one minute). Transport heartbeats are not
+  separate HTTP licence-check requests. An online running app that receives a
+  verified revocation stops puppet controls and shows a notice requiring exit.
+  Closing the notice also exits the app. Network failure alone is not revocation.
   Registration and checks happen only after you accept these terms. A failed
-  connection is not treated as revocation. This development prototype can run
-  with registration pending when the service has not been configured. Public
+  connection is not treated as revocation. Both Development and Public
   installations require successful registration before first use; after that,
   a last-known active licence continues offline without an expiry countdown.
+• Activation codes are private credentials issued by the publisher. The server
+  stores a hash of each code, its administrative label, activation limit, status,
+  and associated installation records. It does not store the original code.
+  Each Windows account and edition consumes an activation. Removing local data
+  does not reset a code's server-side status or activation limit. Contact the
+  publisher after a reinstall or lost code. Resetting activations invalidates
+  previous activations at their next check; offline limits described here still
+  apply. This system does not identify hardware or verify a person's identity.
 • We reserve the right to suspend or revoke a Puppet Desk licence at our
   discretion, for any reason, to the extent permitted by applicable law.
   Mandatory notice, refund and other rights under applicable law remain intact.

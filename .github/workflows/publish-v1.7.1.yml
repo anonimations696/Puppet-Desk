@@ -1,4 +1,4 @@
-name: Publish Puppet Desk 1.9.1
+name: Publish Puppet Desk 1.10.0
 on:
   push:
     branches: [main]
@@ -19,16 +19,17 @@ jobs:
           import json
           h=json.load(open('health.json'))
           assert h.get('Service') == 'PuppetDeskLicensing' and h.get('Ready') is True, 'Service not ready'
-          assert h.get('TermsVersion') == '2026-11-06-2', 'Server update required'
+          assert h.get('Version',0) >= 2 and h.get('ActivationCodes') is True and h.get('LiveRevocation') is True, 'Updated licensing server required'
+          assert h.get('TermsVersion') == '2026-11-07-2', 'Server update required'
           assert h.get('PublicKeySHA256') == '03c14daf9df4d8b6b5689071b381c23fcc518e7cd6e87bc87d61cf459fe14530', 'Verification key mismatch'
           print('Verified live HTTPS server readiness and public verification key')
           PY
       - name: Download verified build artifact
         env:
-          ARTIFACT_URL: 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-4690-81f5-ad59-6a279a605fe1/raw?se=2026-11-07T14%3A25%3A51Z&sp=r&sv=2026-02-06&sr=b&scid=b350be05-290e-4a1a-b5a8-cac6e9d59b44&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-07T12%3A59%3A57Z&ske=2026-11-08T12%3A59%3A57Z&sks=b&skv=2026-02-06&sig=0Zz7LNV7VuVbeqlB6gzZ9XPCGSCgA2c4XJQyTpkTSkk%3D'
+          ARTIFACT_URL: 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-7dc0-81f5-ba32-e55aa80a4520/raw?se=2026-11-07T15%3A30%3A55Z&sp=r&sv=2026-02-06&sr=b&scid=c1c05fb7-6fb5-4363-85b2-8a2d23d1e1cc&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-07T15%3A07%3A17Z&ske=2026-11-08T15%3A07%3A17Z&sks=b&skv=2026-02-06&sig=EmZv2FNUUxrZqDXrfFbsi%2BsUPbPVzv4PJF9KQWobh9o%3D'
         run: |
           curl --fail --location --retry 2 --retry-delay 2 --max-time 60 --output public.zip "$ARTIFACT_URL"
-          echo '21c89683b1c46a86f204c4682a24225e5f866fb16e75911deca26fcf0fb9c4b8  public.zip' | sha256sum --check
+          echo 'dbfa81de0bbbef20f0cb9b69431e9798b69457a2dbf3be96b8790fa1758823e6  public.zip' | sha256sum --check
           mkdir assets
           unzip -q public.zip -d assets
           (cd assets && sha256sum --check SHA256SUMS.txt)
@@ -44,13 +45,13 @@ jobs:
               assert b'for any reason' in exe and b'licensed, not sold' in exe
           assert info.get('application') == 'PuppetDesk'
           assert info.get('channel') == 'Public'
-          assert info.get('version') == '1.9.1'
-          assert info.get('buildNumber') == '86'
-          assert info.get('commit') == '6678e723867cb8af8bd7dc37765d733c818a9f3b'
-          print('Verified Puppet Desk v1.9.1 Build 86; package contains no owner server')
+          assert info.get('version') == '1.10.0'
+          assert info.get('buildNumber') == '91'
+          assert info.get('commit') == '5ef33b125ed2e025ddac22ea81940706051156af'
+          print('Verified Puppet Desk v1.10.0 Build 91; package contains no owner server')
           PY
       - name: Publish release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v1.9.1 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'Puppet Desk 1.9.1' --notes-file .github/release-notes-1.9.1.md --latest
+          gh release create v1.10.0 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'Puppet Desk 1.10.0' --notes-file .github/release-notes-1.10.0.md --latest
