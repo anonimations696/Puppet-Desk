@@ -1,4 +1,4 @@
-name: Publish Puppet Desk 1.9.0
+name: Publish Puppet Desk 1.9.1
 on:
   push:
     branches: [main]
@@ -25,10 +25,10 @@ jobs:
           PY
       - name: Download verified build artifact
         env:
-          ARTIFACT_URL: 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-be2c-81f5-80d5-ef8b540d3ff0/raw?se=2026-11-06T23%3A07%3A25Z&sp=r&sv=2026-02-06&sr=b&scid=509fc879-a9a9-4596-b9fe-c72432805046&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-06T18%3A17%3A35Z&ske=2026-11-07T18%3A17%3A35Z&sks=b&skv=2026-02-06&sig=1QdCz6eqUE9RderXsAjPfBtZ%2BvpkBexCyFw9PCpr5a8%3D'
+          ARTIFACT_URL: 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-4690-81f5-ad59-6a279a605fe1/raw?se=2026-11-07T14%3A25%3A51Z&sp=r&sv=2026-02-06&sr=b&scid=b350be05-290e-4a1a-b5a8-cac6e9d59b44&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-11-07T12%3A59%3A57Z&ske=2026-11-08T12%3A59%3A57Z&sks=b&skv=2026-02-06&sig=0Zz7LNV7VuVbeqlB6gzZ9XPCGSCgA2c4XJQyTpkTSkk%3D'
         run: |
           curl --fail --location --retry 2 --retry-delay 2 --max-time 60 --output public.zip "$ARTIFACT_URL"
-          echo '1581e95eb561195359fc8da646de824d750df3ef187d9d3c9972c86736ebba64  public.zip' | sha256sum --check
+          echo '21c89683b1c46a86f204c4682a24225e5f866fb16e75911deca26fcf0fb9c4b8  public.zip' | sha256sum --check
           mkdir assets
           unzip -q public.zip -d assets
           (cd assets && sha256sum --check SHA256SUMS.txt)
@@ -44,13 +44,13 @@ jobs:
               assert b'for any reason' in exe and b'licensed, not sold' in exe
           assert info.get('application') == 'PuppetDesk'
           assert info.get('channel') == 'Public'
-          assert info.get('version') == '1.9.0'
-          assert info.get('buildNumber') == '85'
-          assert info.get('commit') == '7f33b16c117968acef4e4982017f92dd80abe071'
-          print('Verified Puppet Desk v1.9.0 Build 85; package contains no owner server')
+          assert info.get('version') == '1.9.1'
+          assert info.get('buildNumber') == '86'
+          assert info.get('commit') == '6678e723867cb8af8bd7dc37765d733c818a9f3b'
+          print('Verified Puppet Desk v1.9.1 Build 86; package contains no owner server')
           PY
       - name: Publish release assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create v1.9.0 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'Puppet Desk 1.9.0' --notes-file .github/release-notes-1.9.0.md --latest
+          gh release create v1.9.1 assets/Install-Puppet-Desk.exe assets/PuppetDesk-Windows.zip assets/SHA256SUMS.txt --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title 'Puppet Desk 1.9.1' --notes-file .github/release-notes-1.9.1.md --latest

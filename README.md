@@ -1,3 +1,7 @@
+# Latest update: 1.9.1 · build 86
+
+Licence Administration in Development can remain open while using Puppet Desk. Both editions now persist and serialize first-launch identities so simultaneous copies reuse the same saved identity. Existing licence numbers and labels remain intact. The list represents installations, not login events or verified people; removing local licence data or using another Windows account can create another identity. This update does not add account-based activation.
+
 # Puppet Desk — Free PNGTuber & VTuber Software for Windows
 
 ![Puppet Desk controls, Hands editor and animated puppet](https://github.com/user-attachments/assets/2b86d325-b221-4713-8ff0-137c1d669e4c)
