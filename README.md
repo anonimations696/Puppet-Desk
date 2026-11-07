@@ -1,6 +1,8 @@
-# Latest update: 1.10.0 · build 91
+# Latest update: 1.10.1 · build 91
 
-New installations now require an owner-issued activation code. Existing registered licences retain their number and status. This update adds live revocation notices and licensing connection records; read the updated [licence agreement](EULA.txt) before accepting. Your artwork remains yours.
+This update requires activation for all installations that have never used an owner-issued code, including older registered copies. Accept the updated [licence agreement](EULA.txt), then contact [@DemonSir696 on X](https://x.com/DemonSir696) privately for a code. The activation prompt shows a request number to include in your message. Puppet controls and display remain unavailable until activation. Existing code-based activations remain valid unless revoked or reset.
+
+Close Puppet Desk and run **Update Puppet Desk** to install normally. No replacement installer is needed for existing public installations. Both editions retain the displayed build number 91.
 
 # Puppet Desk — Free PNGTuber & VTuber Software for Windows
 
@@ -16,7 +18,7 @@ Puppet Desk is **licensed, not sold**. This update asks you to read and accept t
 
 > We reserve the right to suspend or revoke a Puppet Desk licence at our discretion, for any reason, to the extent permitted by applicable law.
 
-Mandatory legal rights remain intact. New installations require an owner-issued activation code and an internet connection for first activation. Existing registered licences retain their number and active/revoked status. After activation, a last-known active licence works offline without an expiry countdown. A received revocation remains saved offline. Checks occur at startup, through **Check now**, and through a persistent status connection while online. If a running app receives a verified revocation, it stops puppet controls and shows a notice requiring the app to close. An offline app cannot receive a new revocation until it reconnects. A service outage preserves the last verified status. Earlier versions are not remotely changed by this update.
+Mandatory legal rights remain intact. An owner-issued activation code is required for new installations and for older installations that never activated with a code. An internet connection is required for activation. Existing licence numbers and labels are retained; a pending request does not permit use. After activation, a last-known active licence works offline without an expiry countdown. A received revocation remains saved offline. Checks occur at startup, through **Check now**, and through a persistent status connection while online. If a running app receives a verified revocation, it stops puppet controls and shows a notice requiring the app to close. An offline app cannot receive a new revocation until it reconnects. A service outage preserves the last verified status. Earlier versions are not remotely changed by this update.
 
 **Mode → Licence status** shows your installation number, service and current status. Development and Public have separate installation records. Owner administration is only in Development; it is not included in this public download.
 
@@ -24,7 +26,7 @@ Mandatory legal rights remain intact. New installations require an owner-issued 
 
 ## Activate a licence
 
-Ask the publisher privately for an activation code. Accept the licence agreement, click **Enter activation code**, paste the complete code and click **Activate**. Keep it private and save it securely. The default code allows one installation; Development and Public each consume an activation. Reinstallation or loss of local licence data may require the publisher to reset the activations. There is no in-app request inbox yet.
+Accept the updated licence agreement, then contact [@DemonSir696 on X.com](https://x.com/DemonSir696) privately for an activation code. Include the request number shown on the activation prompt. Paste the complete code and click **Activate**. Controls and puppet display are not created until activation succeeds. Closing or cancelling the prompt does not bypass activation. Keep it private and save it securely. The default code allows one installation; Development and Public each consume an activation. Reinstallation or loss of local licence data may require the publisher to reset the activations. The owner's administration list shows **Pending activation** after **Refresh list**. There is no automatic approval or push notification. Once activated, the same licence record remains.
 
 **Mode → Licence status** shows your licence number and **Check now**. Share that number with the publisher for support. Licensing records include first/last connection IP addresses and a limited connection history after acceptance of the updated agreement. IP addresses do not establish a person's identity. No artwork is uploaded by licensing. See [EULA.txt](EULA.txt) for the data and licensing terms.
 
@@ -32,7 +34,11 @@ Ask the publisher privately for an activation code. Accept the licence agreement
 
 [**Download the Windows installer**](https://github.com/anonimations696/Puppet-Desk/releases/latest/download/Install-Puppet-Desk.exe) · [Official release page](https://github.com/anonimations696/Puppet-Desk/releases/latest)
 
-Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** and **Update Puppet Desk.exe**, with a desktop shortcut for each. Open **Puppet Desk** to perform. For later releases, close it and open **Update Puppet Desk**. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
+Run **Install-Puppet-Desk.exe** once. It installs **Puppet Desk.exe** with an internal updater and a **Puppet Desk** desktop shortcut. Open **Puppet Desk** normally: it checks for updates before opening. An existing **Update Puppet Desk** shortcut remains usable. Older public installations must run their existing updater once to receive this feature. No GitHub account, GitHub CLI, Python, OneDrive link or manual reinstallation is required. Existing public 1.2 users can use their current updater. Private tester users install the public edition once; their development settings remain separate. The Windows executable is unsigned.
+
+## Automatic startup updates
+
+The normal public Puppet Desk app checks the official release before opening its controls. Available updates are verified and installed before the app continues to licensing. A failed update check can fall back to a verified installed copy; activation and known revocations remain enforced. Updates are not installed over another running copy. New installations need only the normal Puppet Desk shortcut. Development keeps its private updater workflow.
 
 ## Start Hosting and Manage Guests
 

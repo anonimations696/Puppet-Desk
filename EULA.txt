@@ -1,5 +1,5 @@
 PUPPET DESK — END USER LICENCE AGREEMENT
-Version 2026-11-07-2
+Version 2026-11-07-3
 
 Please read before selecting “I accept”. This agreement applies to this updated
 version of Puppet Desk, not retrospectively to earlier versions. If you decline,
@@ -67,9 +67,13 @@ channels with questions or requests. Do not post licence credentials publicly.
 By accepting, you agree to the following licensing behaviour:
 
 • The app creates a random installation identifier and secret credential. Once
-  its licensing service is configured and reachable, a new installation must
-  supply an owner-issued activation code to receive a licence number. Existing
-  registered installations retain their licence and status during this transition. A licence identifies an
+  its licensing service is configured and reachable, this updated app requires an owner-issued activation code before use, including
+  existing installations that have never activated with a code. After acceptance,
+  it sends a pending activation request so the publisher can see the installation
+  and its licence number before issuing a code. Existing licence numbers and labels
+  remain saved; a pending request grants no use of Puppet Desk. Existing code-based
+  activations remain valid unless revoked or reset. Contact @DemonSir696 on X
+  (https://x.com/DemonSir696) privately to request a code. A licence identifies an
   installation (separately for Development and Public), not a verified person. Copying the same installation data may
   copy its identity; this is not a hardware fingerprint or identity check.
 • The licensing service receives the installation identifier, a credential for
